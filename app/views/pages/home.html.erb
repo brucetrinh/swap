@@ -1,4 +1,4 @@
-<div id="carousel" class="carousel slide" data-ride="carousel">
+<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -12,7 +12,7 @@
 
     <div class="item active">
     	
-      <%= image_tag("800x600cat.jpeg", :alt => "cat") %>
+      <%= image_tag("800x600cat.jpeg", :alt => "cat", :class =>"img-responsive center-block") %>
 
       <div class="carousel-caption">
         Cat
@@ -21,20 +21,18 @@
 
 
     <div class="item">
-      <%= image_tag("800x600dog.jpg", :alt => "dog") %>
+      <%= image_tag("800x600dog.jpg", :alt => "dog", :class =>"img-responsive center-block") %>
       <div class="carousel-caption">
         Dog      </div>
     </div>
 
     <div class="item">
-      <%= image_tag("800x600winter.jpg", :alt => "winter") %>
+      <%= image_tag("800x600winter.jpg", :alt => "winter", :class =>"img-responsive center-block") %>
       <div class="carousel-caption">
         Winter
       </div>
     </div>
 
-
-    ...
   </div>
 
   <!-- Controls -->
@@ -48,8 +46,13 @@
   </a>
 </div>
 
+<div>
+  <% if user_signed_in? %>
+    Welcome to the App.
+  <% else %>
+  <%= link_to "Log in", about_path, class: "btn btn-default btn-lg" %>
+  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default btn-lg" %>
+  <%end%>
 
-
-
-
+</div>
 
