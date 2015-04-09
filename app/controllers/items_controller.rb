@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @items = Item.all
@@ -9,14 +11,14 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = current_user.items.build
   end
 
   def edit
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
     if @item.save
       redirect_to @item, notice: 'Item was successfully created.'
     else
@@ -41,6 +43,11 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
+    end
+
+    def correct_user
+      @item = current_user.items.find_by(id: params[:id])
+      redirect_to items_path, notice: "Not authorized to edit this item" if @item.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
