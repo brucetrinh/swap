@@ -1,3 +1,8 @@
+<% if user_signed_in? %>
+  <%= link_to 'New Item', new_item_path %>
+
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Items</h1>
