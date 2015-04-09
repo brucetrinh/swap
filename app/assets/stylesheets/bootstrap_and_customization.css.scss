@@ -2,12 +2,15 @@ $navbar-height: 45px;
 
 
 
-
-
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 .center {
 	text-align: center;
 
+}
+
+.navbar-form {
+	margin-left: 0px;
+	margin-right: 0px;
 }
