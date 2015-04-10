@@ -9,6 +9,8 @@
 <table>
   <thead>
     <tr>
+
+      <th>Image</th>
       <th>Description</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -18,6 +20,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.image.url(:medium) %></td>
         <td><%= item.description %></td>
         <td><%= item.user.email if item.user %></td>
         <td><%= link_to 'Show', item %></td>
