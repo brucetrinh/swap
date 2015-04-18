@@ -1,9 +1,3 @@
-<% if user_signed_in? %>
-  <%= link_to 'New Item', new_item_path %>
-
-<% end %>
-
-
 <h1>Listing Items</h1>
 
 <table>
@@ -20,7 +14,10 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= image_tag item.image.url(:medium) %></td>
+
+        <td><%= link_to image_tag(item.image.url(:medium)), item %>
+        </td>
+
         <td><%= item.description %></td>
         <td><%= item.user.email if item.user %></td>
         <td><%= link_to 'Show', item %></td>
