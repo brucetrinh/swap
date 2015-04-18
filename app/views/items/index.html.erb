@@ -24,9 +24,14 @@
         
         <%= link_to 'Show', item %>
         <% if item.user == current_user %>
+
+
           <%= link_to 'Edit', edit_item_path(item) %>
-          <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+          
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span> Remove'.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary' %>
+
         <% end %>
+
       </div>
     </div>
     <% end %>
@@ -34,9 +39,7 @@
 
       <% if user_signed_in? %>
     <div>
-      <%= link_to new_item_path, :class => 'btn btn-primary' do %>
-        <span class="glyphicon glyphicon-plus"> </span> New Item
-      <% end %>
+      <%= link_to '<span class="glyphicon glyphicon-plus"></span> New Item'.html_safe, new_item_path, :class => 'btn btn-primary' %>
     </div>
 
   </div>
